@@ -36,6 +36,18 @@ functions:
           - ce:GetCostAndUsage
         Resource: '*'
 
+  taskList:
+    handler: src/taskHandler.list
+    events:
+      - httpApi:
+          method: get
+          path: /tasks
+    iamRoleStatements:
+      - Effect: Allow
+        Action:
+          - dynamoDB:Scan
+        Resource: "arn:aws:dynamodb:*:*:table/tasks"
+
   taskPost:
     handler: src/taskHandler.post
     events:
@@ -47,6 +59,7 @@ functions:
         Action:
           - dynamoDB:PutItem
         Resource: "arn:aws:dynamodb:*:*:table/tasks"
+  
 
 resources:
   Resources:
