@@ -5,12 +5,18 @@ plugins:
   - serverless-webpack
   - serverless-iam-roles-per-function
   - serverless-api-gateway-throttling
+  - serverless-s3-sync
 
 custom:
   apiGatewayThrottling:
     maxRequestsPerSecond: 10
     maxConcurrentRequests: 5
   bucketName: kento-yoshizu-todoapps
+  s3Sync:
+    buckets:
+      - bucketName: ${self:custom.bucketName}
+        # localDir: frontend/build
+        localDir: static
 
 provider:
   name: aws
