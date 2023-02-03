@@ -1,14 +1,16 @@
-import { DynamoDB } from "aws-sdk";
-import crypt from "crypto"
+import { DynamoDB } from "aws-sdk"
+import crypto from "crypto"
 
 export async function list(event, context) {
-  const dynamoDB = new DynamoDB({
+  const dynamodb = new DynamoDB({
     region: "ap-northeast-1"
   })
 
-  const result = await dynamoDB.scan({
-    TableName: "tasks",
-  }).promise()
+  const result = await dynamodb
+    .scan({
+      TableName: "tasks"
+    })
+    .promise()
 
   const tasks = result.Items.map((item) => {
     return {
@@ -24,7 +26,7 @@ export async function post(event, context) {
   const requestBody = JSON.parse(event.body);
 
   const item = {
-    id: { S: crypt.randomUUID() },
+    id: { S: crypto.randomUUID() },
     title: { S: requestBody.title }
   }
 
