@@ -11,13 +11,6 @@ provider:
   region: ap-northeast-1
 
 functions:
-  first:
-    handler: first.hello
-  second:
-    handler: second.hello
-  hello:
-    handler: src/hello.handler
-
   costNotifier:
     handler: src/costNotifier.handler
     events:
