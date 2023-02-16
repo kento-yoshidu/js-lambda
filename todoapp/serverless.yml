@@ -15,8 +15,7 @@ custom:
   s3Sync:
     buckets:
       - bucketName: ${self:custom.bucketName}
-        # localDir: frontend/build
-        localDir: static
+        localDir: frontend/build
 
 provider:
   name: aws

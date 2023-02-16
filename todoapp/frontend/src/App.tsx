@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
 function App() {
+  useEffect(() => {
+    fetch(= "https://j1x5q4zn51.execute-api.ap-northeast-1.amazonaws.com"
+  })
   return (
     <div className="App">
       <header className="App-header">
